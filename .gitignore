@@ -1,0 +1,32 @@
+# Build artifacts
+build/
+build-target/
+out/
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.code-workspace
+
+# Gradle
+.gradle/
+gradle.properties.local
+
+# Fabric Loom
+remappedSrc/
+run/
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Misc
+.wrangler/
+*.log

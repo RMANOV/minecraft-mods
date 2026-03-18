@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "medievalconquest",
+	"version": "${version}",
+	"name": "Erik's Medieval Conquest",
+	"description": "Medieval castles, modified tree mechanics, and overworld dragons!",
+	"authors": [
+		"Erik"
+	],
+	"license": "MIT",
+	"icon": "assets/medievalconquest/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.erik.medievalconquest.MedievalConquestMod"
+		],
+		"client": [
+			"com.erik.medievalconquest.MedievalConquestClient"
+		]
+	},
+	"mixins": [
+		"medievalconquest.mixins.json",
+		{
+			"config": "medievalconquest.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.18.2",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
