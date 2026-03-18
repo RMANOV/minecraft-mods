@@ -145,16 +145,216 @@ minecraft-mods/
 └── snippets/                   # Reusable Fabric modding patterns (1.21.x)
 ```
 
+## Transfer: New Machine Setup (Full Guide)
+
+Everything you need to go from a fresh computer to running the mods in-game.
+
+### Step 1: Install Prerequisites
+
+**Java 21 (JDK, not just JRE — you need `javac`):**
+
+```bash
+# Fedora / RHEL
+sudo dnf install java-21-openjdk-devel
+
+# Ubuntu / Debian
+sudo apt install openjdk-21-jdk
+
+# Arch
+sudo pacman -S jdk21-openjdk
+
+# macOS (Homebrew)
+brew install openjdk@21
+
+# Windows — download from https://adoptium.net/temurin/releases/?version=21
+# After install, verify:
+java -version    # should show 21.x
+javac -version   # MUST work — if not, you have JRE not JDK
+```
+
+**Git:**
+```bash
+# Fedora
+sudo dnf install git
+
+# Ubuntu
+sudo apt install git
+
+# macOS (comes with Xcode CLI tools)
+xcode-select --install
+
+# Windows — https://git-scm.com/download/win
+```
+
+**Minecraft + Fabric Loader:**
+1. Install Minecraft from [minecraft.net](https://minecraft.net)
+2. Install Fabric Loader from [fabricmc.net/use/installer](https://fabricmc.net/use/installer/)
+   - Select Minecraft version **1.21.11** (or matching)
+   - Check "Create profile"
+   - Click Install
+3. Download Fabric API from [modrinth.com/mod/fabric-api](https://modrinth.com/mod/fabric-api) (version 0.139.4+)
+4. Drop the Fabric API `.jar` into your `mods/` folder (see Step 4)
+
+### Step 2: Clone the Repo
+
+```bash
+git clone https://github.com/RMANOV/minecraft-mods.git
+cd minecraft-mods
+```
+
+That's it. Everything is in the repo — source code, textures, build configs, Gradle wrapper.
+
+### Step 3: Build the Mod JAR
+
+```bash
+# Build Medieval Conquest v2 (latest)
+cd mods/medieval-conquest
+./gradlew build
+
+# The JAR is at:
+ls build/libs/erik-medieval-conquest-*.jar
+# You want the one WITHOUT "-sources" in the name
+```
+
+**First build takes 2-5 minutes** (downloads Minecraft source, Fabric API, maps bytecode). Subsequent builds take ~15 seconds.
+
+**Troubleshooting:**
+```bash
+# "Permission denied" on Linux/Mac:
+chmod +x gradlew
+
+# "JAVA_HOME not set" or wrong Java version:
+export JAVA_HOME=/path/to/jdk-21
+./gradlew build
+
+# Find your JDK path:
+# Linux: /usr/lib/jvm/java-21-openjdk/
+# macOS: /Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home/
+# Windows: C:\Program Files\Eclipse Adoptium\jdk-21\
+
+# "Could not resolve dependencies" (network issue):
+# Make sure you have internet. Gradle downloads ~500MB on first build.
+
+# Nuclear option — clean everything and retry:
+./gradlew clean build --refresh-dependencies
+```
+
+### Step 4: Install the Mod
+
+```bash
+# Find your Minecraft mods folder:
+# Linux:   ~/.minecraft/mods/
+# macOS:   ~/Library/Application Support/minecraft/mods/
+# Windows: %APPDATA%\.minecraft\mods\
+
+# Copy the built JAR there:
+cp build/libs/erik-medieval-conquest-0.1.0.jar ~/.minecraft/mods/
+
+# Also make sure Fabric API is in the same folder!
+```
+
+Launch Minecraft with the **Fabric** profile. Done.
+
+### Step 5: Verify In-Game
+
+```
+/locate structure medievalconquest:castle     # Find a castle
+/summon medievalconquest:overworld_dragon ~ ~10 ~  # Spawn a dragon
+/castle                                        # Build castle at your feet
+```
+
+### Quick Transfer (No Build Required)
+
+If you just want to play without building from source:
+
+1. On the machine that already has the mod built, grab the JAR:
+   ```
+   mods/medieval-conquest/build/libs/erik-medieval-conquest-0.1.0.jar
+   ```
+2. Copy it to the new machine (USB, email, cloud, whatever)
+3. Drop it in `~/.minecraft/mods/` alongside Fabric API
+4. Launch with Fabric profile
+
+### Syncing Changes Between Machines
+
+```bash
+# On machine A — after making changes:
+cd minecraft-mods
+git add -A
+git commit -m "describe your changes"
+git push
+
+# On machine B — to get the latest:
+cd minecraft-mods
+git pull
+cd mods/medieval-conquest
+./gradlew build
+cp build/libs/*.jar ~/.minecraft/mods/
+```
+
+### Offline Transfer (No Internet on Target Machine)
+
+If the target machine has no internet, Gradle can't download dependencies. Options:
+
+**Option A: Transfer the built JAR only** (easiest)
+- Build on machine with internet
+- Copy `build/libs/erik-medieval-conquest-0.1.0.jar` via USB
+- Only needs Fabric Loader + Fabric API installed on target
+
+**Option B: Transfer the Gradle cache** (for full dev setup)
+```bash
+# On source machine — archive the Gradle cache + repo:
+tar czf mc-mods-portable.tar.gz \
+  minecraft-mods/ \
+  ~/.gradle/caches/fabric-loom/ \
+  ~/.gradle/caches/modules-2/
+
+# On target machine:
+tar xzf mc-mods-portable.tar.gz -C ~/
+cd minecraft-mods/mods/medieval-conquest
+./gradlew build --offline
+```
+
+**Option C: `--offline` build with wrapper JARs**
+```bash
+# On source machine — do a full build first, then:
+cd mods/medieval-conquest
+./gradlew build --write-locks   # locks dependency versions
+
+# Copy the entire minecraft-mods/ directory + ~/.gradle/ to target
+# On target: ./gradlew build --offline
+```
+
+### Directory Map After Setup
+
+```
+~/.minecraft/
+├── mods/
+│   ├── fabric-api-0.139.4+1.21.11.jar    # Fabric API (download separately)
+│   └── erik-medieval-conquest-0.1.0.jar   # Your mod (built from source)
+├── versions/
+│   └── fabric-loader-0.18.2-1.21.11/     # Fabric Loader (from installer)
+└── ...
+
+~/minecraft-mods/                          # This repo (source code)
+├── mods/medieval-conquest/                # v2 source
+├── mods/medieval-conquest-v1/             # v1 source
+└── ...
+```
+
+---
+
 ## Requirements
 
-| Component | Version |
-|-----------|---------|
-| Java | 21+ |
-| Minecraft | 1.21.x |
-| Fabric Loader | 0.18.2+ |
-| Fabric API | 0.139.4+ |
+| Component | Version | Where to Get It |
+|-----------|---------|-----------------|
+| Java | 21+ (JDK) | [adoptium.net](https://adoptium.net) or your package manager |
+| Minecraft | 1.21.x | [minecraft.net](https://minecraft.net) |
+| Fabric Loader | 0.18.2+ | [fabricmc.net](https://fabricmc.net/use/installer/) |
+| Fabric API | 0.139.4+ | [modrinth.com/mod/fabric-api](https://modrinth.com/mod/fabric-api) |
+| Git | any | [git-scm.com](https://git-scm.com) |
 
-Gradle wrapper is included in each mod — no global Gradle install needed.
+Gradle wrapper is included in each mod — **no global Gradle install needed**.
 
 ## Contributing
 
