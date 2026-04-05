@@ -5,12 +5,8 @@
 		" S"
 	],
 	"key": {
-		"F": {
-			"item": "minecraft:flint"
-		},
-		"S": {
-			"item": "minecraft:stick"
-		}
+		"F": "minecraft:flint",
+		"S": "minecraft:stick"
 	},
 	"result": {
 		"id": "medievalconquest:brazier",
