@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "FAF",
+    "ACA",
+    "FAF"
+  ],
+  "key": {
+    "F": "machinaarcana:assembler_frame",
+    "A": "machinaarcana:arcane_ingot",
+    "C": "machinaarcana:mana_crystal"
+  },
+  "result": {
+    "id": "machinaarcana:assembler_core",
+    "count": 1
+  }
+}

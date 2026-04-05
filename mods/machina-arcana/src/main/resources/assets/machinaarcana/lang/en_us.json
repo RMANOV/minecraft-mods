@@ -1,0 +1,12 @@
+{
+  "block.machinaarcana.assembler_frame": "Assembler Frame",
+  "block.machinaarcana.assembler_core": "Assembler Core",
+  "block.machinaarcana.mana_conduit": "Mana Conduit",
+
+  "item.machinaarcana.mana_crystal": "Mana Crystal",
+  "item.machinaarcana.arcane_ingot": "Arcane Ingot",
+
+  "itemGroup.machinaarcana.main": "Machina Arcana",
+
+  "particle.machinaarcana.mana_stream": "Mana Stream"
+}

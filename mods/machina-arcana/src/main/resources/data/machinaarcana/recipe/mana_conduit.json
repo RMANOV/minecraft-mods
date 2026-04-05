@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    "AGA",
+    " A "
+  ],
+  "key": {
+    "A": "machinaarcana:arcane_ingot",
+    "G": "minecraft:glass"
+  },
+  "result": {
+    "id": "machinaarcana:mana_conduit",
+    "count": 4
+  }
+}

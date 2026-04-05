@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "arcanenaturalis",
+	"version": "${version}",
+	"name": "Arcane Naturalis",
+	"description": "A living world mod — flocking butterflies, procedural crystals, magical particles, and seasonal foliage. Java 21 educational showcase.",
+	"authors": [
+		"Erik"
+	],
+	"license": "MIT",
+	"icon": "assets/arcanenaturalis/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.erik.arcanenaturalis.ArcaneNaturalisMod"
+		],
+		"client": [
+			"com.erik.arcanenaturalis.ArcaneNaturalisClient"
+		]
+	},
+	"mixins": [
+		"arcanenaturalis.mixins.json",
+		{
+			"config": "arcanenaturalis.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.18.2",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

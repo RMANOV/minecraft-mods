@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "machinaarcana",
+	"version": "${version}",
+	"name": "Machina Arcana",
+	"description": "Magical Machines — educational Java 21 showcase with generics, builder patterns, sealed interfaces, and functional pipelines.",
+	"authors": [
+		"Erik"
+	],
+	"license": "MIT",
+	"icon": "assets/machinaarcana/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.erik.machinaarcana.MachinaArcanaMod"
+		],
+		"client": [
+			"com.erik.machinaarcana.MachinaArcanaClient"
+		]
+	},
+	"mixins": [
+		"machinaarcana.mixins.json",
+		{
+			"config": "machinaarcana.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.18.2",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

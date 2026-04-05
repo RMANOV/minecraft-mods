@@ -1,0 +1,13 @@
+{
+  "entity.bestiary.pack_wolf": "Pack Wolf",
+  "item.bestiary.pack_wolf_spawn_egg": "Pack Wolf Spawn Egg",
+  "death.attack.mob": "%1$s was killed",
+  "bestiary.role.alpha": "Alpha",
+  "bestiary.role.scout": "Scout",
+  "bestiary.role.flanker": "Flanker",
+  "bestiary.role.guard": "Guard",
+  "bestiary.morale.panicking": "Panicking",
+  "bestiary.morale.rallied": "Rallied",
+  "bestiary.morale.hold": "Holding",
+  "bestiary.morale.fight": "Fighting"
+}

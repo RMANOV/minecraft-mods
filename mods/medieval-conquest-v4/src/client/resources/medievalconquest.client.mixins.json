@@ -1,0 +1,11 @@
+{
+	"required": true,
+	"package": "com.erik.medievalconquest.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"InventoryCursorMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

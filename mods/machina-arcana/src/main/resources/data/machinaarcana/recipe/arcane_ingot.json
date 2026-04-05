@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NAN",
+    "AGA",
+    "NAN"
+  ],
+  "key": {
+    "N": "minecraft:netherite_scrap",
+    "A": "minecraft:amethyst_shard",
+    "G": "minecraft:gold_ingot"
+  },
+  "result": {
+    "id": "machinaarcana:arcane_ingot",
+    "count": 1
+  }
+}

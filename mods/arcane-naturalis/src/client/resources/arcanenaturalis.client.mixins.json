@@ -1,0 +1,11 @@
+{
+	"required": true,
+	"package": "com.erik.arcanenaturalis.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"FoliageColorMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

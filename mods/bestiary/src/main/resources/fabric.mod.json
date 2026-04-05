@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "bestiary",
+	"version": "${version}",
+	"name": "Bestiary: Advanced Mob AI",
+	"description": "Wolf packs with roles, fear/morale system, signal propagation, and composable behavior trees. Java 21 showcase: sealed interfaces, records, pattern matching, generics.",
+	"authors": [
+		"Erik"
+	],
+	"license": "MIT",
+	"icon": "assets/bestiary/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.erik.bestiary.BestiaryMod"
+		],
+		"client": [
+			"com.erik.bestiary.BestiaryClient"
+		]
+	},
+	"mixins": [
+		"bestiary.mixins.json",
+		{
+			"config": "bestiary.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.18.2",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

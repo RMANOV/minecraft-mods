@@ -1,0 +1,7 @@
+{
+  "block.arcanenaturalis.crystal_seed": "Crystal Seed",
+  "block.arcanenaturalis.crystal_block": "Crystal Block",
+  "entity.arcanenaturalis.butterfly": "Butterfly",
+  "itemGroup.arcanenaturalis.main": "Arcane Naturalis",
+  "death.attack.arcanenaturalis.crystal": "%1$s was crystallized"
+}

@@ -1,0 +1,11 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		"medievalconquest:hyacinth",
+		"medievalconquest:hyacinth"
+	],
+	"result": {
+		"id": "medievalconquest:herb_bundle",
+		"count": 1
+	}
+}

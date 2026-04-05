@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    "ADA",
+    " A "
+  ],
+  "key": {
+    "A": "minecraft:amethyst_shard",
+    "D": "minecraft:diamond"
+  },
+  "result": {
+    "id": "machinaarcana:mana_crystal",
+    "count": 1
+  }
+}

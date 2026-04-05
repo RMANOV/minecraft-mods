@@ -1,0 +1,15 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"FS",
+		" S"
+	],
+	"key": {
+		"F": "minecraft:flint",
+		"S": "minecraft:stick"
+	},
+	"result": {
+		"id": "medievalconquest:brazier",
+		"count": 1
+	}
+}
