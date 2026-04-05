@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "lumenrealis",
+	"version": "${version}",
+	"name": "Lumen Realis",
+	"description": "Photorealistic rendering: PBR materials, dynamic lighting, bloom, SSAO, volumetric fog, and atmospheric sky.",
+	"authors": [
+		"Erik"
+	],
+	"license": "MIT",
+	"icon": "assets/lumenrealis/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.erik.lumenrealis.LumenRealisMod"
+		],
+		"client": [
+			"com.erik.lumenrealis.LumenRealisClient"
+		]
+	},
+	"mixins": [
+		"lumenrealis.mixins.json",
+		{
+			"config": "lumenrealis.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.18.2",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

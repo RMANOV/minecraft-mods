@@ -1,0 +1,12 @@
+{
+	"required": true,
+	"package": "com.erik.lumenrealis.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"GameRendererMixin",
+		"LevelRendererMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
