@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:block/leaves",
+	"textures": {
+		"all": "medievalconquest:block/lilac_leaves"
+	}
+}

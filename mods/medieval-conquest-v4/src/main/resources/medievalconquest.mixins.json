@@ -2,9 +2,7 @@
 	"required": true,
 	"package": "com.erik.medievalconquest.mixin",
 	"compatibilityLevel": "JAVA_21",
-	"mixins": [
-		"LogBreakSpeedMixin"
-	],
+	"mixins": [],
 	"injectors": {
 		"defaultRequire": 1
 	}

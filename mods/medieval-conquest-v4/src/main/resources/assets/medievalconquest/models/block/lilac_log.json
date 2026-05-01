@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_column",
+	"textures": {
+		"end": "medievalconquest:block/lilac_log_top",
+		"side": "medievalconquest:block/lilac_log"
+	}
+}

@@ -1,9 +1,13 @@
 {
 	"item.medievalconquest.brazier": "Hatchet",
 	"item.medievalconquest.claim_marker": "Castle Claim Marker",
+	"item.medievalconquest.dragon_meat": "Dragon Meat",
+	"item.medievalconquest.overworld_dragon_spawn_egg": "Overworld Dragon Spawn Egg",
 	"block.medievalconquest.claim_marker": "Castle Claim Marker",
 	"block.medievalconquest.hyacinth": "Hyacinth",
-	"item.medievalconquest.herb_bundle": "Herb Bundle",
+	"block.medievalconquest.lilac_log": "Lilac Log",
+	"block.medievalconquest.lilac_leaves": "Lilac Leaves",
+	"item.medievalconquest.herb_bundle": "Lilac Herb",
 	"entity.medievalconquest.overworld_dragon": "Overworld Dragon",
 	"itemGroup.medievalconquest": "Medieval Conquest"
 }

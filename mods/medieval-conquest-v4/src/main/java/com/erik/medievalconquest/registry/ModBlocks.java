@@ -3,6 +3,7 @@ package com.erik.medievalconquest.registry;
 import com.erik.medievalconquest.MedievalConquestMod;
 import com.erik.medievalconquest.block.ClaimMarkerBlock;
 import com.erik.medievalconquest.block.LightSourceBlock;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.block.FlowerBlock;
 import com.erik.medievalconquest.block.entity.ClaimMarkerBlockEntity;
@@ -17,6 +18,8 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.UntintedParticleLeavesBlock;
 
 public class ModBlocks {
 
@@ -50,6 +53,34 @@ public class ModBlocks {
 					.pushReaction(PushReaction.DESTROY)
 	);
 
+	// ── Lilac tree blocks for spruce/taiga biomes ──
+	public static final ResourceKey<Block> LILAC_LOG_KEY = ResourceKey.create(
+			Registries.BLOCK,
+			Identifier.fromNamespaceAndPath(MedievalConquestMod.MOD_ID, "lilac_log"));
+
+	public static final Block LILAC_LOG = new RotatedPillarBlock(
+			BlockBehaviour.Properties.of()
+					.setId(LILAC_LOG_KEY)
+					.strength(2.0f)
+					.sound(SoundType.WOOD)
+					.ignitedByLava()
+	);
+
+	public static final ResourceKey<Block> LILAC_LEAVES_KEY = ResourceKey.create(
+			Registries.BLOCK,
+			Identifier.fromNamespaceAndPath(MedievalConquestMod.MOD_ID, "lilac_leaves"));
+
+	public static final Block LILAC_LEAVES = new UntintedParticleLeavesBlock(0.025f, ParticleTypes.CHERRY_LEAVES,
+			BlockBehaviour.Properties.of()
+					.setId(LILAC_LEAVES_KEY)
+					.strength(0.2f)
+					.randomTicks()
+					.sound(SoundType.GRASS)
+					.noOcclusion()
+					.ignitedByLava()
+					.pushReaction(PushReaction.DESTROY)
+	);
+
 	// ── Invisible dynamic light source ──
 	public static final ResourceKey<Block> LIGHT_SOURCE_KEY = ResourceKey.create(
 			Registries.BLOCK,
@@ -77,6 +108,8 @@ public class ModBlocks {
 				CLAIM_MARKER_ENTITY);
 
 		Registry.register(BuiltInRegistries.BLOCK, HYACINTH_KEY, HYACINTH);
+		Registry.register(BuiltInRegistries.BLOCK, LILAC_LOG_KEY, LILAC_LOG);
+		Registry.register(BuiltInRegistries.BLOCK, LILAC_LEAVES_KEY, LILAC_LEAVES);
 		Registry.register(BuiltInRegistries.BLOCK, LIGHT_SOURCE_KEY, LIGHT_SOURCE);
 
 		MedievalConquestMod.LOGGER.info("Blocks registered!");
