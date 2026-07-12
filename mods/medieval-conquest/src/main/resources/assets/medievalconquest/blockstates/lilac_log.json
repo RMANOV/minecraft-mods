@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=x": { "model": "medievalconquest:block/lilac_log_horizontal" },
+    "axis=y": { "model": "medievalconquest:block/lilac_log" },
+    "axis=z": { "model": "medievalconquest:block/lilac_log_horizontal", "y": 90 }
+  }
+}

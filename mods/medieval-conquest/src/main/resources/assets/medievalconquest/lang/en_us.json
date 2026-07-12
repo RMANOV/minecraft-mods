@@ -1,7 +1,16 @@
 {
 	"item.medievalconquest.brazier": "Brazier",
 	"item.medievalconquest.claim_marker": "Castle Claim Marker",
+	"item.medievalconquest.lilac_log": "Lilac Log",
+	"item.medievalconquest.lilac_leaves": "Lilac Leaves",
+	"item.medievalconquest.lilac_flowering_leaves": "Flowering Lilac Leaves",
+	"item.medievalconquest.pink_flower": "Pink Lilac Flower",
+	"item.medievalconquest.candied_flower": "Candied Lilac Flower",
+	"item.medievalconquest.overworld_dragon_spawn_egg": "Overworld Dragon Spawn Egg",
 	"block.medievalconquest.claim_marker": "Castle Claim Marker",
+	"block.medievalconquest.lilac_log": "Lilac Log",
+	"block.medievalconquest.lilac_leaves": "Lilac Leaves",
+	"block.medievalconquest.lilac_flowering_leaves": "Flowering Lilac Leaves",
 	"entity.medievalconquest.overworld_dragon": "Overworld Dragon",
 	"itemGroup.medievalconquest": "Medieval Conquest"
 }

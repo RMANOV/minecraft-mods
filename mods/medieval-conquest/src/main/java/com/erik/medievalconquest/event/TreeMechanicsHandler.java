@@ -2,6 +2,7 @@ package com.erik.medievalconquest.event;
 
 import com.erik.medievalconquest.MedievalConquestMod;
 import com.erik.medievalconquest.item.BrazierItem;
+import com.erik.medievalconquest.registry.ModBlocks;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -51,7 +52,10 @@ public class TreeMechanicsHandler {
 	private static void onBlockBroken(Level level, Player player,
 			BlockPos pos, BlockState state, BlockEntity blockEntity) {
 		// Leaves drop 1-3 extra sticks
-		if (state.is(BlockTags.LEAVES) && !level.isClientSide()) {
+		if (state.is(BlockTags.LEAVES)
+				&& !state.is(ModBlocks.LILAC_LEAVES)
+				&& !state.is(ModBlocks.LILAC_FLOWERING_LEAVES)
+				&& !level.isClientSide()) {
 			int stickCount = 1 + level.getRandom().nextInt(3); // 1-3 sticks
 			Block.popResource(level, pos,
 					new ItemStack(Items.STICK, stickCount));
