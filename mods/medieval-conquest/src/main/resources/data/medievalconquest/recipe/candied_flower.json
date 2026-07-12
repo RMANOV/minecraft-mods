@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "SFS",
+    "SSS"
+  ],
+  "key": {
+    "S": "minecraft:sugar",
+    "F": "medievalconquest:pink_flower"
+  },
+  "result": {
+    "id": "medievalconquest:candied_flower",
+    "count": 1
+  }
+}

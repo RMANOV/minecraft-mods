@@ -5,6 +5,7 @@ import com.erik.medievalconquest.event.TreeMechanicsHandler;
 import com.erik.medievalconquest.registry.ModBlocks;
 import com.erik.medievalconquest.registry.ModEntities;
 import com.erik.medievalconquest.registry.ModItems;
+import com.erik.medievalconquest.world.LilacTreeGenerator;
 import com.erik.medievalconquest.world.ModWorldGen;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -23,6 +24,7 @@ public class MedievalConquestMod implements ModInitializer {
 		ModEntities.register();
 		TreeMechanicsHandler.register();
 		ModWorldGen.register();
+		LilacTreeGenerator.register();
 		ModCommands.register();
 
 		LOGGER.info("=== Medieval Conquest ready! Time to conquer! ===");
