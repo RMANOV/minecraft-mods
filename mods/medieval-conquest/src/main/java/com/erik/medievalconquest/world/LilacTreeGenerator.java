@@ -4,15 +4,16 @@ import com.erik.medievalconquest.MedievalConquestMod;
 import com.erik.medievalconquest.registry.ModBlocks;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerChunkEvents;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.QuartPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.levelgen.Heightmap;
 
@@ -51,27 +52,32 @@ public final class LilacTreeGenerator {
 		}
 
 		for (int attempt = 0; attempt < MAX_ATTEMPTS_PER_CHUNK; attempt++) {
-			int x = chunkPos.getBlockX(random.nextInt(16));
-			int z = chunkPos.getBlockZ(random.nextInt(16));
-			int y = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, x, z);
+			// Keep the complete radius-2 crown inside this event's chunk.  A
+			// CHUNK_GENERATE callback must never synchronously load a neighbour.
+			int localX = 3 + random.nextInt(10);
+			int localZ = 3 + random.nextInt(10);
+			int x = chunkPos.getBlockX(localX);
+			int z = chunkPos.getBlockZ(localZ);
+			int y = chunk.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, localX, localZ);
 			BlockPos base = new BlockPos(x, y, z);
 
-			if (level.getBiome(base).is(BiomeTags.IS_FOREST)
-					&& canPlaceAt(level, base)) {
-				placeLilacTree(level, base, random);
+			if (chunk.getNoiseBiome(QuartPos.fromBlock(x), QuartPos.fromBlock(y), QuartPos.fromBlock(z))
+					.is(BiomeTags.IS_FOREST)
+					&& canPlaceAt(chunk, base)) {
+				placeLilacTree(chunk, base, random);
 				return;
 			}
 		}
 	}
 
-	private static boolean canPlaceAt(ServerLevel level, BlockPos base) {
-		BlockState ground = level.getBlockState(base.below());
+	private static boolean canPlaceAt(ChunkAccess chunk, BlockPos base) {
+		BlockState ground = chunk.getBlockState(base.below());
 		if (!ground.is(BlockTags.DIRT)) {
 			return false;
 		}
 
 		for (int y = 0; y <= 8; y++) {
-			if (!canReplace(level.getBlockState(base.above(y)))) {
+			if (!canReplace(chunk.getBlockState(base.above(y)))) {
 				return false;
 			}
 		}
@@ -79,7 +85,7 @@ public final class LilacTreeGenerator {
 		return true;
 	}
 
-	private static void placeLilacTree(ServerLevel level, BlockPos base, RandomSource random) {
+	private static void placeLilacTree(ChunkAccess chunk, BlockPos base, RandomSource random) {
 		int trunkHeight = 4 + random.nextInt(3);
 		BlockState log = ModBlocks.LILAC_LOG.defaultBlockState();
 		BlockState leaves = ModBlocks.LILAC_LEAVES.defaultBlockState()
@@ -89,7 +95,7 @@ public final class LilacTreeGenerator {
 		boolean floweringLeafPlaced = false;
 
 		for (int y = 0; y < trunkHeight; y++) {
-			level.setBlock(base.above(y), log, Block.UPDATE_ALL);
+			chunk.setBlockState(base.above(y), log);
 		}
 
 		int crownBase = trunkHeight - 2;
@@ -104,12 +110,12 @@ public final class LilacTreeGenerator {
 					}
 
 					BlockPos leafPos = base.offset(dx, y, dz);
-					if (leafPos.equals(base.above(y)) || !canReplace(level.getBlockState(leafPos))) {
+					if (leafPos.equals(base.above(y)) || !canReplace(chunk.getBlockState(leafPos))) {
 						continue;
 					}
 
 					boolean flowering = random.nextFloat() < 0.30f;
-					level.setBlock(leafPos, flowering ? floweringLeaves : leaves, Block.UPDATE_ALL);
+					chunk.setBlockState(leafPos, flowering ? floweringLeaves : leaves);
 					floweringLeafPlaced |= flowering;
 				}
 			}
@@ -119,8 +125,8 @@ public final class LilacTreeGenerator {
 		// that otherwise produced no flowering leaves.
 		if (!floweringLeafPlaced) {
 			BlockPos fallback = base.above(trunkHeight + 1);
-			if (canReplace(level.getBlockState(fallback))) {
-				level.setBlock(fallback, floweringLeaves, Block.UPDATE_ALL);
+			if (canReplace(chunk.getBlockState(fallback))) {
+				chunk.setBlockState(fallback, floweringLeaves);
 			}
 		}
 	}
