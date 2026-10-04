@@ -8,7 +8,9 @@
     "fabric-gametest": [
       "com.erik.medievalconquest.BarrierGameTest",
       "com.erik.medievalconquest.AnomalyRecipeGameTest",
-      "com.erik.medievalconquest.EquipmentDropGameTest"
+      "com.erik.medievalconquest.EquipmentDropGameTest",
+      "com.erik.medievalconquest.EquipmentDropAcceptanceGameTest",
+      "com.erik.medievalconquest.AnomalyMenuGameTest"
     ]
   },
   "depends": {"medievalconquest": "*", "fabric-gametest-api-v1": "*"}
