@@ -1,0 +1,23 @@
+{
+	"schemaVersion": 1,
+	"id": "redstonedust",
+	"version": "${version}",
+	"name": "Eric's Redstone Dust Playground",
+	"description": "A friendly, beginner-tier mod that teaches Eric how redstone works: a redstone playground kit and a step-by-step tutorial book.",
+	"authors": [
+		"Eric"
+	],
+	"license": "MIT",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.erik.redstonedust.RedstoneDustMod"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.18.2",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

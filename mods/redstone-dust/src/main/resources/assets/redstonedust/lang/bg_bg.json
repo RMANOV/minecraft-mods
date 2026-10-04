@@ -1,0 +1,13 @@
+{
+	"item.redstonedust.redstone_kit": "Комплект за игра с редстоун",
+	"item.redstonedust.tutorial_book": "Книжка за редстоун",
+
+	"tooltip.redstonedust.redstone_kit.line1": "Натисни с десен бутон по земята, за да построиш схема!",
+	"tooltip.redstonedust.redstone_kit.line2": "Лост -> редстоун прах -> лампа.",
+
+	"tooltip.redstonedust.tutorial_book.line1": "Натисни с десен бутон, за да получиш книжката стъпка по стъпка.",
+	"tooltip.redstonedust.tutorial_book.line2": "Научи редстоун от самото начало!",
+
+	"message.redstonedust.playground_built": "Площадката е готова! Дръпни лоста!",
+	"message.redstonedust.book_given": "Ето ти книжката за редстоун!"
+}
