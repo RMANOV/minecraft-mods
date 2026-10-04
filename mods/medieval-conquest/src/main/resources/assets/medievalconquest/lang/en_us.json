@@ -1,4 +1,7 @@
 {
+	"block.medievalconquest.icy_obsidian": "Icy Obsidian",
+	"block.medievalconquest.temporary_barrier": "Temporary Barrier",
+	"block.medievalconquest.permanent_barrier": "Permanent Barrier",
 	"item.medievalconquest.brazier": "Brazier",
 	"item.medievalconquest.claim_marker": "Castle Claim Marker",
 	"item.medievalconquest.lilac_log": "Lilac Log",
