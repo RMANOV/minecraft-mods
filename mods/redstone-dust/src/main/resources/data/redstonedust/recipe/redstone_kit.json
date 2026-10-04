@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"RRR",
+		"RLR",
+		"RPR"
+	],
+	"key": {
+		"R": "minecraft:redstone",
+		"L": "minecraft:lever",
+		"P": "minecraft:redstone_lamp"
+	},
+	"result": {
+		"id": "redstonedust:redstone_kit",
+		"count": 1
+	}
+}

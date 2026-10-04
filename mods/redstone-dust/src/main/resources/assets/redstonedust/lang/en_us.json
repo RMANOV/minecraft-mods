@@ -1,0 +1,13 @@
+{
+	"item.redstonedust.redstone_kit": "Redstone Playground Kit",
+	"item.redstonedust.tutorial_book": "Redstone Tutorial Book",
+
+	"tooltip.redstonedust.redstone_kit.line1": "Right-click the ground to build a working circuit!",
+	"tooltip.redstonedust.redstone_kit.line2": "Lever -> redstone dust -> redstone lamp.",
+
+	"tooltip.redstonedust.tutorial_book.line1": "Right-click to get the step-by-step book.",
+	"tooltip.redstonedust.tutorial_book.line2": "Learn redstone from scratch!",
+
+	"message.redstonedust.playground_built": "Redstone playground built! Flip the lever!",
+	"message.redstonedust.book_given": "Here is your redstone tutorial book!"
+}
