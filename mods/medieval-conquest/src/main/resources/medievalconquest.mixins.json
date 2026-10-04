@@ -3,7 +3,8 @@
 	"package": "com.erik.medievalconquest.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"LogBreakSpeedMixin"
+		"LogBreakSpeedMixin",
+		"MobEquipmentDropMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
