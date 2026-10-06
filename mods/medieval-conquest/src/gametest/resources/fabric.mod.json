@@ -12,7 +12,6 @@
       "com.erik.medievalconquest.EquipmentDropAcceptanceGameTest",
       "com.erik.medievalconquest.AnomalyMenuGameTest",
       "com.erik.medievalconquest.SnowResourceGameTest",
-      "com.erik.medievalconquest.BarrierPersistenceGameTest",
       "com.erik.medievalconquest.AnomalyItemGameTest",
       "com.erik.medievalconquest.ItemDefinitionsGameTest",
       "com.erik.medievalconquest.IcyObsidianHarvestGameTest"

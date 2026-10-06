@@ -44,6 +44,68 @@ tasks.matching { it.name == 'runGameTest' }.configureEach {
     doFirst { gameTestWorld.get().asFile.deleteDir() }
 }
 
+// Barrier save/restart proof: two separate server processes share one private world, so these
+// probes live in their own source set/mod that the default native suite never loads.
+//   runRestartProbe -Pmedieval.disk.phase=writer  fresh world: place barriers, save, exit
+//   runRestartProbe -Pmedieval.disk.phase=reader  new JVM: load that world, check lifetimes
+// Both phases also take -Pmedieval.disk.nonce=<32 hex> and -Pmedieval.disk.oracle=<absolute path>.
+// A coordinator runs writer then reader and checks build/reports/restart-probe/<phase>.xml.
+sourceSets {
+    restartTest {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+configurations {
+    restartTestCompileClasspath.extendsFrom compileClasspath
+    restartTestRuntimeClasspath.extendsFrom runtimeClasspath
+}
+loom {
+    mods {
+        "medievalconquest-restart" {
+            sourceSet sourceSets.restartTest
+        }
+    }
+    runs {
+        restartProbe {
+            server()
+            source sourceSets.restartTest
+            property "fabric-api.gametest"
+            runDir "build/run/restartProbe"
+            ideConfigGenerated false
+        }
+    }
+}
+def restartWorld = layout.buildDirectory.dir('run/restartProbe/world')
+def restartReports = layout.buildDirectory.dir('reports/restart-probe')
+tasks.matching { it.name == 'runRestartProbe' }.configureEach { t ->
+    def phase = providers.gradleProperty('medieval.disk.phase').getOrElse('')
+    def method = [writer: 'write', reader: 'read'][phase]
+    def report = restartReports.get().file("${phase ?: 'unset'}.xml").asFile
+    t.maxHeapSize = '2g'
+    t.systemProperty 'medieval.disk.phase', phase
+    t.systemProperty 'medieval.disk.nonce', providers.gradleProperty('medieval.disk.nonce').getOrElse('')
+    t.systemProperty 'medieval.disk.oracle', providers.gradleProperty('medieval.disk.oracle').getOrElse('')
+    t.systemProperty 'fabric-api.gametest.filter',
+            "medievalconquest-restart:barrier_persistence_game_test_${method}_lifetime_probe"
+    t.systemProperty 'fabric-api.gametest.report-file', report.absolutePath
+    t.doFirst {
+        if (method == null) {
+            throw new GradleException('runRestartProbe needs -Pmedieval.disk.phase=writer|reader')
+        }
+        def world = restartWorld.get().asFile
+        if (phase == 'writer') {
+            world.deleteDir()
+        } else if (!new File(world, 'region').isDirectory()) {
+            throw new GradleException("reader needs the writer's saved world at ${world}")
+        }
+        report.parentFile.mkdirs()
+        report.delete()
+    }
+}
+// The probes only run through the coordinator, but every build must still compile them.
+tasks.named('check') { dependsOn tasks.named('restartTestClasses') }
+
 dependencies {
     testImplementation "net.fabricmc:fabric-loader-junit:${project.loader_version}"
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"

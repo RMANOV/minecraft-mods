@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "medievalconquest-restart",
+  "version": "1.0.0",
+  "name": "Medieval Conquest Restart Probes",
+  "description": "Two-process barrier save/restart probes; run only through runRestartProbe.",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-gametest": [
+      "com.erik.medievalconquest.BarrierPersistenceGameTest"
+    ]
+  },
+  "depends": {"medievalconquest": "*", "fabric-gametest-api-v1": "*"}
+}
