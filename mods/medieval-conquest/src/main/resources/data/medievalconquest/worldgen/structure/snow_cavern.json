@@ -1,0 +1,7 @@
+{
+  "type": "medievalconquest:snow_cavern",
+  "biomes": "#medievalconquest:has_structure/snow_cavern",
+  "spawn_overrides": {},
+  "step": "underground_structures",
+  "terrain_adaptation": "none"
+}

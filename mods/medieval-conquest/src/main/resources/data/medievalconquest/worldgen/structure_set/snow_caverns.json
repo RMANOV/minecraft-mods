@@ -1,0 +1,4 @@
+{
+  "placement": {"type": "minecraft:random_spread", "salt": 869010431, "separation": 8, "spacing": 32},
+  "structures": [{"structure": "medievalconquest:snow_cavern", "weight": 1}]
+}

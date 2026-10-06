@@ -10,7 +10,10 @@
       "com.erik.medievalconquest.AnomalyRecipeGameTest",
       "com.erik.medievalconquest.EquipmentDropGameTest",
       "com.erik.medievalconquest.EquipmentDropAcceptanceGameTest",
-      "com.erik.medievalconquest.AnomalyMenuGameTest"
+      "com.erik.medievalconquest.AnomalyMenuGameTest",
+      "com.erik.medievalconquest.SnowResourceGameTest",
+      "com.erik.medievalconquest.BarrierPersistenceGameTest",
+      "com.erik.medievalconquest.AnomalyItemGameTest"
     ]
   },
   "depends": {"medievalconquest": "*", "fabric-gametest-api-v1": "*"}

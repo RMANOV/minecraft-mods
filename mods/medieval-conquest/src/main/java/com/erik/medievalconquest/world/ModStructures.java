@@ -16,6 +16,8 @@ public class ModStructures {
 	public static final StructureType<CastleStructure> CASTLE_TYPE = () -> CastleStructure.CODEC;
 
 	public static final StructurePieceType CASTLE_PIECE = CastlePiece::new;
+	public static final StructureType<SnowCavernStructure> SNOW_CAVERN_TYPE = () -> SnowCavernStructure.CODEC;
+	public static final StructurePieceType SNOW_CAVERN_PIECE = SnowCavernPiece::new;
 
 	public static void register() {
 		Registry.register(BuiltInRegistries.STRUCTURE_TYPE,
@@ -25,6 +27,10 @@ public class ModStructures {
 		Registry.register(BuiltInRegistries.STRUCTURE_PIECE,
 				Identifier.fromNamespaceAndPath(MedievalConquestMod.MOD_ID, "castle_piece"),
 				CASTLE_PIECE);
+		Registry.register(BuiltInRegistries.STRUCTURE_TYPE,
+				Identifier.fromNamespaceAndPath(MedievalConquestMod.MOD_ID, "snow_cavern"), SNOW_CAVERN_TYPE);
+		Registry.register(BuiltInRegistries.STRUCTURE_PIECE,
+				Identifier.fromNamespaceAndPath(MedievalConquestMod.MOD_ID, "snow_cavern_piece"), SNOW_CAVERN_PIECE);
 
 		MedievalConquestMod.LOGGER.info("Structures registered!");
 	}
