@@ -6,6 +6,7 @@ import com.erik.medievalconquest.registry.ModBlocks;
 import com.erik.medievalconquest.registry.ModAnomalyBlocks;
 import com.erik.medievalconquest.registry.ModAnomalyRecipes;
 import com.erik.medievalconquest.registry.ModAnomalyItems;
+import com.erik.medievalconquest.registry.ModCreativeTab;
 import com.erik.medievalconquest.registry.ModEntities;
 import com.erik.medievalconquest.registry.ModItems;
 import com.erik.medievalconquest.world.LilacTreeGenerator;
@@ -27,6 +28,7 @@ public class MedievalConquestMod implements ModInitializer {
 		ModAnomalyBlocks.register();
 		ModAnomalyRecipes.register();
 		ModAnomalyItems.register();
+		ModCreativeTab.register();
 		ModEntities.register();
 		TreeMechanicsHandler.register();
 		ModWorldGen.register();

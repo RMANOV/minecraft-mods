@@ -24,7 +24,8 @@ public final class ModAnomalyBlocks {
         return BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, id(name)))
                 .strength(5.0f, 1200.0f).pushReaction(PushReaction.BLOCK);
     }
-    public static final Block ICY_OBSIDIAN = new Block(properties("icy_obsidian"));
+    /** Natural snow-cavern resource: only a diamond-tier pickaxe harvests it (tags in data/minecraft). */
+    public static final Block ICY_OBSIDIAN = new Block(properties("icy_obsidian").requiresCorrectToolForDrops());
     public static final Block TEMPORARY_BARRIER = new TemporaryBarrierBlock(
             properties("temporary_barrier").noLootTable());
     public static final Block PERMANENT_BARRIER = new Block(properties("permanent_barrier"));
@@ -40,6 +41,7 @@ public final class ModAnomalyBlocks {
     private static void register(String name, Block block) {
         Registry.register(BuiltInRegistries.BLOCK, id(name), block);
         Registry.register(BuiltInRegistries.ITEM, id(name), new BlockItem(block,
-                new Item.Properties().setId(ResourceKey.create(Registries.ITEM, id(name)))));
+                new Item.Properties().setId(ResourceKey.create(Registries.ITEM, id(name)))
+                        .useBlockDescriptionPrefix()));
     }
 }
