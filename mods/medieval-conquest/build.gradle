@@ -37,6 +37,13 @@ fabricApi {
     }
 }
 
+// Loom keeps build/run/gameTest between runs; start every native suite from a fresh world so
+// entities and blocks saved by an earlier run cannot leak into fixtures.
+def gameTestWorld = layout.buildDirectory.dir('run/gameTest/world')
+tasks.matching { it.name == 'runGameTest' }.configureEach {
+    doFirst { gameTestWorld.get().asFile.deleteDir() }
+}
+
 dependencies {
     testImplementation "net.fabricmc:fabric-loader-junit:${project.loader_version}"
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
