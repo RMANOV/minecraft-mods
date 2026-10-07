@@ -17,7 +17,9 @@ public final class ModAnomalyItems {
     private static final ResourceKey<Item> FLOWER_KEY=ResourceKey.create(Registries.ITEM,
             Identifier.fromNamespaceAndPath(MedievalConquestMod.MOD_ID,"alien_flower"));
     public static final Item BAD_ORB=new BadOrbItem(new Item.Properties().setId(ORB_KEY).stacksTo(1));
-    public static final Item ALIEN_FLOWER=new AlienFlowerItem(new Item.Properties().setId(FLOWER_KEY).stacksTo(16));
+    /** Smell in the air, plant on the ground (places ModAnomalyBlocks.ALIEN_FLOWER). */
+    public static final Item ALIEN_FLOWER=new AlienFlowerItem(ModAnomalyBlocks.ALIEN_FLOWER,
+            new Item.Properties().setId(FLOWER_KEY).stacksTo(16));
 
     private ModAnomalyItems() {}
 

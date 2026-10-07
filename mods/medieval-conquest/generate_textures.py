@@ -252,7 +252,7 @@ def main():
     save(flowering_lilac_leaves(), "block", "lilac_flowering_leaves")
     save(PINK_FLOWER, "item", "pink_flower")
     save(CANDIED_FLOWER, "item", "candied_flower")
-    save(ALIEN_FLOWER, "item", "alien_flower")
+    save(ALIEN_FLOWER, "block", "alien_flower")
     save(bad_orb(), "item", "bad_orb")
     save(dragon_spawn_egg(), "item", "overworld_dragon_spawn_egg")
 
