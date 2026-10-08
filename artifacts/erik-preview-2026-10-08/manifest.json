@@ -1,0 +1,78 @@
+{
+  "schema": "ERIK_PREVIEW_ARTIFACT_DELIVERY_V2",
+  "version": "0.1.0",
+  "as_of_utc": "2026-10-08T15:45:24.121920+00:00",
+  "delivery_status": "ARTIFACT_SNAPSHOT_NATIVE_ACCEPTANCE_PENDING",
+  "repository": {
+    "name": "RMANOV/minecraft-mods",
+    "visibility": "public",
+    "target_branch": "main",
+    "observed_remote_main": "f654ed2e30eca9a48a23f8ffd550050642febff9",
+    "relative_directory": "artifacts/erik-preview-2026-10-08/"
+  },
+  "mod": {
+    "file": "erik-medieval-conquest-0.1.0.jar",
+    "bytes": 245886,
+    "sha256": "8edc4ff7f8d86db56d2c320ccb75a8eb2fd936425b3e02624bb5cbbf6f01308d",
+    "fabric_mod_id": "medievalconquest",
+    "compiled_class_major": 65,
+    "license": "MIT"
+  },
+  "minecraft": "1.21.11",
+  "fabric_loader": "0.18.2",
+  "java_minimum": 21,
+  "fabric_api": {
+    "file": "fabric-api-0.139.4+1.21.11.jar",
+    "bytes": 2124063,
+    "sha256": "3d379228d2b966956b227781c5db2ac8ad89428d4e1f98787baca332a97e9c5e",
+    "official_download_url": "https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/0.139.4+1.21.11/fabric-api-0.139.4+1.21.11.jar",
+    "publisher_checksum_url": "https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/0.139.4+1.21.11/fabric-api-0.139.4+1.21.11.jar.sha256",
+    "included_in_this_delivery": false
+  },
+  "instructions": {
+    "file": "FIRST_PLAY.bg.md",
+    "source_revision": "Native FIRST_PLAY v4 dated checkpoint with public snapshot preface",
+    "sha256": "9e63bab344bc28d1480afd98b54d5561427952390a8df13ccfcb184a31c4fd8d",
+    "source_v4_sha256": "4376f68fb3fa72f3eb92c713cccf7cda898d548222157ca85c0a57a47636ee62",
+    "current_validation_status_file": "VALIDATION_STATUS.bg.md"
+  },
+  "source_build": {
+    "base_checkout_commit": "2094237fdd45672f8e03f5a14c5d25338da28ca3",
+    "artifact_built_from_working_tree": true,
+    "working_tree_was_dirty": true,
+    "exact_artifact_commit_or_main_source_equivalence": "NOT_CLAIMED",
+    "production_JAR_hash_is_the_artifact_identity": true
+  },
+  "verified_boundaries": {
+    "unit_tests": 106,
+    "native_server_fixture_tests": 61,
+    "server_flight_cases": 13,
+    "writer_reader_persistence": "PASS_TWO_SEPARATE_SERVER_PROCESSES",
+    "ordinary_official_launcher_application_started": "LOCAL_SETUP_ONLY_NOT_WORLD_ACCEPTANCE",
+    "exact_fabric_profile_and_version_installed": "PASS_LOCAL_SETUP",
+    "test_fixture_world_available": "PASS_LOCAL_SETUP_NOT_ADVENTURE_MAP",
+    "test_fixture_world_included_in_snapshot": false
+  },
+  "pending_acceptance": {
+    "ordinary_native_client_world_open": true,
+    "native_input_to_glide": true,
+    "visible_wings_and_HUD": true,
+    "three_flight_PNGs": true,
+    "processed_class_origins": true,
+    "Lubuntu_runtime": true,
+    "TLauncher_installation_or_runtime": true,
+    "whole_mod_requirements": true
+  },
+  "limitations": [
+    "Server/unit success is not native client acceptance.",
+    "FIRST_PLAY retains a dated local setup checkpoint; VALIDATION_STATUS states current acceptance boundaries.",
+    "The fixture is flat/test-datapack server data, not a delivered adventure map.",
+    "This candidate makes no repository publication, Release, account or platform acceptance claim."
+  ],
+  "validation_status": {
+    "file": "VALIDATION_STATUS.bg.md",
+    "sha256": "ae6ad14097acb79fc70f4e75f09f35c3c864fa31e89259a9fd8f644ac05347f5"
+  },
+  "latest_client_validation": "D3_RESOURCE_MONITOR_REFUSAL_BEFORE_WORLD_ACCEPTANCE_NOT_ESTABLISHED_MOD_DEFECT",
+  "next_source_change": "D4_SOURCE_ONLY_IMPLEMENTATION_IN_PROGRESS_NOT_NATIVE_ACCEPTED"
+}
